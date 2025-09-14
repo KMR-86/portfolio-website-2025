@@ -1,6 +1,15 @@
-
 // Blog list page functionality
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded in blogs.js');
+
+    // First, initialize the hamburger menu
+    if (typeof addHamburgerMenu === 'function') {
+        console.log('Adding hamburger menu in blogs.js');
+        addHamburgerMenu();
+    } else {
+        console.log('addHamburgerMenu function not found in blogs.js');
+    }
+
     // Blog data structure with metadata and file paths
     const blogPosts = [
         {
