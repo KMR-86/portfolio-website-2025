@@ -65,6 +65,49 @@
 /* Small tablets */
 @media screen and (max-width: 768px) {
     /* Reduce section padding */
+    .about-section {
+        padding: 40px 20px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .about-section .inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-text {
+        width: 100%;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .about-pic {
+        margin: 30px auto 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .about-pic .wrapper {
+        margin: 0 auto;
+    }
+
+    .about-section h2.numbered-heading {
+        padding-left: 25px;
+        text-align: left;
+        margin-left: 10px;
+        width: auto;
+    }
+
+    .skills-list {
+        justify-content: center;
+        margin: 20px auto;
+        max-width: 450px;
+    }
     .about-section,
     #skills,
     #work-experience {
@@ -101,7 +144,7 @@
         width: 75%;
         height: 100vh;
         background-color: var(--light-navy);
-        box-shadow: -10px 0px 30px -15px rgba(2, 12, 27, 0.7);
+        box-shadow: -10px 1px 30px -15px rgba(2, 12, 27, 0.7);
         z-index: 9;
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;

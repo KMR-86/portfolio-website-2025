@@ -47,6 +47,11 @@ themeToggleBtn.addEventListener('click', function() {
 // Hamburger menu for mobile
 // Hamburger menu for mobile
 const addHamburgerMenu = () => {
+    // Check if hamburger already exists
+    if (document.querySelector('.hamburger')) {
+        return; // Exit if hamburger already exists
+    }
+
     // Create hamburger button
     const hamburger = document.createElement('div');
     hamburger.className = 'hamburger';
@@ -54,61 +59,62 @@ const addHamburgerMenu = () => {
 
     // Get nav element
     const nav = document.querySelector('nav');
-    const navRight = document.querySelector('.nav-right');
     const navLinks = document.querySelector('.nav-links');
 
     // Insert hamburger at the beginning of nav
-    nav.insertBefore(hamburger, nav.firstChild);
+    if (nav) {
+        nav.insertBefore(hamburger, nav.firstChild);
 
-    // Toggle menu on click
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        document.body.classList.toggle('blur');
+        // Toggle menu on click
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            document.body.classList.toggle('blur');
 
-        // Update hamburger appearance
-        if (navLinks.classList.contains('open')) {
-            hamburger.classList.add('active');
-        } else {
-            hamburger.classList.remove('active');
-        }
-    });
-
-    // Close menu when clicking on links
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('open');
-            hamburger.classList.remove('active');
-            document.body.classList.remove('blur');
+            // Update hamburger appearance
+            if (navLinks.classList.contains('open')) {
+                hamburger.classList.add('active');
+            } else {
+                hamburger.classList.remove('active');
+            }
         });
-    });
 
-    // Handle clicking outside to close menu
-    document.addEventListener('click', (e) => {
-        const isOutside = !e.target.closest('.nav-links') &&
-            !e.target.closest('.hamburger');
+        // Close menu when clicking on links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('blur');
+            });
+        });
 
-        if (isOutside && navLinks.classList.contains('open')) {
-            navLinks.classList.remove('open');
-            hamburger.classList.remove('active');
-            document.body.classList.remove('blur');
-        }
-    });
+        // Handle clicking outside to close menu
+        document.addEventListener('click', (e) => {
+            const isOutside = !e.target.closest('.nav-links') &&
+                !e.target.closest('.hamburger');
 
-    // Show/hide hamburger based on screen size
-    const handleResize = () => {
-        if (window.innerWidth <= 768) {
-            hamburger.style.display = 'block';
-        } else {
-            hamburger.style.display = 'none';
-            navLinks.classList.remove('open');
-            hamburger.classList.remove('active');
-            document.body.classList.remove('blur');
-        }
-    };
+            if (isOutside && navLinks.classList.contains('open')) {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('blur');
+            }
+        });
 
-    // Initial check and event listener
-    handleResize();
-    window.addEventListener('resize', handleResize);
+        // Show/hide hamburger based on screen size
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                hamburger.style.display = 'block';
+            } else {
+                hamburger.style.display = 'none';
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('blur');
+            }
+        };
+
+        // Initial check and event listener
+        handleResize();
+        window.addEventListener('resize', handleResize);
+    }
 };
 
 

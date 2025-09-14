@@ -73,3 +73,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('blog-body').innerHTML = '<p>The requested blog post could not be found.</p>';
     }
 });
+
+// Ensure hamburger menu works on single blog post page
+document.addEventListener('DOMContentLoaded', function() {
+    // Call the hamburger menu function
+    if (typeof addHamburgerMenu === 'function') {
+        addHamburgerMenu();
+    }
+
+    // Get blog ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const blogId = urlParams.get('id');
+
+    if (blogId) {
+        // Load blog content
+        // Your existing blog loading code...
+    }
+});
